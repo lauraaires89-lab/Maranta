@@ -425,10 +425,13 @@ a:hover>.ph img,.ph:hover img{transform:scale(1.04)}
 .pr .tbd{font-size:15px;font-weight:600}
 .corp{background:#1c1016;min-height:600px!important}.corp>img{left:0!important;right:0!important;width:100%!important;transform:none!important;object-position:50% 55%!important;-webkit-mask-image:none;mask-image:none}
 .corp::after{background:linear-gradient(90deg,rgba(28,12,22,.7) 0,rgba(28,12,22,.45) 34%,rgba(28,12,22,0) 52%)!important}
+.chero{min-height:460px!important}
+.chero h1{max-width:min(20ch,62vw)}
 .how{background:#2B1F4D!important}
 .foot{background:#2B1F4D!important}
 @media(max-width:700px){
 .hero{min-height:790px!important}
+.chero{min-height:430px!important}
 .hero .hero-bg img{display:none!important}
 .hero .hero-bg{height:calc(100vw * 1.12 * 767 / 1152)!important;background:url(img/hero-consola-mob.jpg) 50% 100%/112% auto no-repeat!important;-webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.6) 18%,#000 42%)!important;mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.6) 18%,#000 42%)!important}
 .hero .hero-bg{top:auto!important;bottom:0!important;width:100%!important;transform:none!important;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 30%)!important;mask-image:linear-gradient(180deg,transparent 0,#000 30%)!important;aspect-ratio:auto;height:40%!important;right:0!important}
@@ -665,7 +668,7 @@ function vCustom(){
 }
 function vCare(){
   var tips=[['cut','Recorta la mecha','A 0,5 cm cada vez que la vayas a encender.'],['table','Superficie segura','Ponla sobre una superficie plana que resista el calor.'],['wind','Lejos de corrientes','Y fuera del alcance de niños y mascotas.'],['eye','Nunca sola','Jamás la dejes sin supervisión mientras está encendida.']];
-  return vBanner('Cuidado de tu vela','¡Gracias por elegir Maranta!','Cada pieza fue hecha a mano pensando en el momento en que la vas a encender. Así la cuidas para que dure más y se vea mejor.','waxmelts-2')+
+  return vBanner('Cuidado de tu vela','¡Gracias por elegir Maranta!','Cada pieza fue hecha a mano pensando en el momento en que la vas a encender. Así la cuidas para que dure más y se vea mejor.','cuidado-plum')+
     '<div class="wrap"><section class="sec"><div class="sec-h"><h2>Antes de encenderla</h2><p>Cuatro hábitos sencillos que hacen la diferencia.</p></div><div class="vals">'+tips.map(function(t){return val(t[0],t[1],t[2])}).join('')+'</div></section>'+
     '<section class="sec" style="padding-top:0"><div class="sec-h"><h2>Según tu producto</h2><p>Cada tipo tiene sus propios cuidados.</p></div><div class="types">'+
       '<div class="type"><span class="vi">'+ICO.drop+'</span><h3>¿Tu vela es aromática?</h3><p>Enciéndela mínimo 2 horas para que el aroma se libere por completo, y máximo 4 para cuidarla.</p><ul><li>La primera vez, deja que la cera se derrita hasta los bordes.</li><li>Apágala y espera a que se enfríe antes de volver a encenderla.</li></ul></div>'+
