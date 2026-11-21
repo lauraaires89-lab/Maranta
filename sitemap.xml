@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<url><loc>https://bymaranta.vercel.app/</loc><changefreq>weekly</changefreq><priority>1.0</priority>
+<image:image><image:loc>https://bymaranta.vercel.app/img/duendes-estudio.jpg</image:loc></image:image>
+<image:image><image:loc>https://bymaranta.vercel.app/img/osito-pedestal.jpg</image:loc></image:image>
+<image:image><image:loc>https://bymaranta.vercel.app/img/carrito-cap-estudio.jpg</image:loc></image:image>
+<image:image><image:loc>https://bymaranta.vercel.app/img/carrito-arbol-estudio.jpg</image:loc></image:image>
+<image:image><image:loc>https://bymaranta.vercel.app/img/esfera-osito-arbol.jpg</image:loc></image:image>
+<image:image><image:loc>https://bymaranta.vercel.app/img/esfera-perrito-arbol.jpg</image:loc></image:image>
+<image:image><image:loc>https://bymaranta.vercel.app/img/vasos-estudio.jpg</image:loc></image:image>
+<image:image><image:loc>https://bymaranta.vercel.app/img/rodajas-estudio.jpg</image:loc></image:image>
+<image:image><image:loc>https://bymaranta.vercel.app/img/alce-caja-nieve.jpg</image:loc></image:image>
+<image:image><image:loc>https://bymaranta.vercel.app/img/alce-solo.jpg</image:loc></image:image>
+<image:image><image:loc>https://bymaranta.vercel.app/img/arbol-solo.jpg</image:loc></image:image>
+<image:image><image:loc>https://bymaranta.vercel.app/img/nac-rosa.jpg</image:loc></image:image>
+<image:image><image:loc>https://bymaranta.vercel.app/img/vasito-vino.jpg</image:loc></image:image>
+<image:image><image:loc>https://bymaranta.vercel.app/img/wax-caja.jpg</image:loc></image:image>
+<image:image><image:loc>https://bymaranta.vercel.app/img/wax-sueltas.jpg</image:loc></image:image>
+<image:image><image:loc>https://bymaranta.vercel.app/img/bouquet.jpg</image:loc></image:image>
+<image:image><image:loc>https://bymaranta.vercel.app/img/postre.jpg</image:loc></image:image>
+</url>
+<url><loc>https://bymaranta.vercel.app/llms.txt</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+</urlset>
