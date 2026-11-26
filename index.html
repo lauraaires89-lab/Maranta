@@ -708,7 +708,7 @@ function vCare(){
       faq('¿Cuánto dura mi vela?','Depende del tamaño de la pieza. Te contamos la duración aproximada de cada una cuando hagas tu pedido.')+
       faq('¿Puedo regalarla?','Claro. Al hacer tu pedido puedes elegir empaque para regalo y dejarnos una dedicatoria.')+
       faq('¿Cómo la guardo?','En un lugar fresco, lejos del sol y de fuentes de calor, para que conserve su color y su aroma.')+'</div></div></section>'+
-    '<div class="custom" style="margin-bottom:10px"><h2>¿Dudas con tu vela?</h2><p>Escríbenos y te ayudamos con gusto.</p><div><a class="btn coral" href="#" data-wa="Hola Maranta 👋 Tengo una duda sobre el cuidado de mi vela.">'+waIco+'Escríbenos por WhatsApp</a></div></div></div>';
+    '<div class="custom" style="margin-bottom:10px"><h2>¿Dudas con tu vela?</h2><p>Escríbenos y te ayudamos con gusto.</p><div><a class="btn coral" href="#" data-wa="Hola Maranta, tengo una duda sobre el cuidado de mi vela.">'+waIco+'Escríbenos por WhatsApp</a></div></div></div>';
 }
 function vAbout(){
   return vBanner('Sobre Maranta','Velas y experiencias aromáticas','Un taller de velas y Wax Melts hechos a mano en Colombia, pensados para convertir un momento cualquiera en uno que quieras repetir.','sobre-escritorio')+
@@ -840,7 +840,7 @@ function sendWA(text){
 }
 function orderText(p){
   var g=function(i){return ($('#'+i)&&$('#'+i).value||'').trim()},n=g('oN'),c=g('oP'),note=g('oT');
-  var l=['Hola Maranta 👋'+(n?' Soy '+n+'.':''),'Quiero pedir:','','• '+pv.sel.Cantidad+' × '+p.name];
+  var l=['Hola Maranta,'+(n?' Soy '+n+'.':''),'Quiero pedir:','','• '+pv.sel.Cantidad+' × '+p.name];
   OPTS.forEach(function(o){if(o.k!=='Cantidad')l.push('   '+o.k+': '+pv.sel[o.k])});
   if(c)l.push('   Mi teléfono: '+c);
   if(note)l.push('','Nota: '+note);
@@ -853,7 +853,7 @@ function checkContact(nid,pid,e){
     toast(bad===n?'Cuéntanos tu nombre para saber a quién escribirle.':'Déjanos tu número de teléfono para poder escribirte.');return false}
   return true}
 var wf=$('#waFloat');
-if(WA_NUMBER){wf.href=waUrl('Hola Maranta 👋 Quisiera más información.');wf.target='_blank';wf.rel='noopener'}
+if(WA_NUMBER){wf.href=waUrl('Hola Maranta, quisiera más información.');wf.target='_blank';wf.rel='noopener'}
 document.addEventListener('click',function(e){
   var t;
   if((t=e.target.closest('#waFloat'))){if(!WA_NUMBER){e.preventDefault();toast('El WhatsApp se activa muy pronto.')}return}
@@ -868,7 +868,7 @@ document.addEventListener('submit',function(e){
   if(e.target.id==='customForm'){e.preventDefault();
     if(!checkContact('cf-n','cf-p',e))return;
     var g=function(i){return ($('#'+i).value||'').trim()};
-    var l=['Hola Maranta 👋 Soy '+g('cf-n')+'.','Quiero un pedido personalizado:','','Tipo: '+$('#cf-t').value];
+    var l=['Hola Maranta, Soy '+g('cf-n')+'.','Quiero un pedido personalizado:','','Tipo: '+$('#cf-t').value];
     if(g('cf-q'))l.push('Cantidad: '+g('cf-q'));if(g('cf-f'))l.push('Fecha: '+g('cf-f'));if(g('cf-d'))l.push('Idea: '+g('cf-d'));
     l.push('Mi teléfono: '+g('cf-p'));
     sendWA(l.join('\n'));}
