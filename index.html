@@ -289,7 +289,7 @@ a:hover>.ph img,.ph:hover img{transform:scale(1.04)}
 .ofrm .field textarea{min-height:76px}
 .ofrm .btn{width:100%}
 .otot{font-size:15px;margin:2px 0 -4px}
-.cartb{position:relative;padding:0 11px;color:inherit}.cartb[hidden]{display:none!important}
+.cartb{position:relative;padding:0 11px;color:inherit}.cartn[hidden]{display:none}
 .cartn{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--coral);color:#2B1F4D;font:700 11px/20px 'Aftika',sans-serif;text-align:center}
 .cartb.bump{animation:bump .5s cubic-bezier(.2,.7,.2,1)}@keyframes bump{40%{transform:scale(1.18)}}
 .dnav+.cartb{margin-left:8px}
@@ -497,7 +497,7 @@ a:hover>.ph img,.ph:hover img{transform:scale(1.04)}
       <a href="#sobre" data-nav="sobre">Sobre Maranta</a>
       <a href="#cuidado" data-nav="cuidado">Cuidado</a>
     </nav>
-    <a class="ibtn cartb" id="cartBtn" href="#pedido" aria-label="Mi pedido" hidden><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 01-2 1.8H8.2a2 2 0 01-2-1.8L5 8z"/><path d="M9 8V6.5a3 3 0 016 0V8"/></svg><span class="cartn" id="cartN">0</span></a>
+    <a class="ibtn cartb" id="cartBtn" href="#pedido" aria-label="Mi pedido"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 01-2 1.8H8.2a2 2 0 01-2-1.8L5 8z"/><path d="M9 8V6.5a3 3 0 016 0V8"/></svg><span class="cartn" id="cartN">0</span></a>
     <button class="ibtn only-m" id="menuBtn" aria-label="Abrir menú"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
   </div></div>
 </header>
@@ -872,7 +872,7 @@ var CART=[];try{CART=JSON.parse(localStorage.getItem('maranta_pedido')||'[]')||[
 CART=CART.filter(function(x){return x&&byId(x.id)});
 function saveCart(){try{localStorage.setItem('maranta_pedido',JSON.stringify(CART))}catch(e){}cartBadge()}
 function cartCount(){return CART.reduce(function(a,x){return a+x.q},0)}
-function cartBadge(){var n=cartCount(),b=$('#cartBtn');if(!b)return;b.hidden=!n;$('#cartN').textContent=n;b.setAttribute('aria-label','Mi pedido, '+n+(n===1?' pieza':' piezas'))}
+function cartBadge(){var n=cartCount(),b=$('#cartBtn');if(!b)return;$('#cartN').textContent=n;$('#cartN').hidden=!n;b.setAttribute('aria-label','Mi pedido, '+n+(n===1?' pieza':' piezas'))}
 function addToCart(p){var q=parseInt(pv.sel.Cantidad,10)||1,emp=pv.sel.Empaque,note=(($('#oT')&&$('#oT').value)||'').trim();
   var f=null;for(var i=0;i<CART.length;i++){var x=CART[i];if(x.id===p.id&&x.emp===emp&&!note&&!x.note){f=x;break}}
   if(f)f.q+=q;else CART.push({id:p.id,q:q,emp:emp,note:note});saveCart();
