@@ -17,4 +17,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://bymaranta.vercel.app/sitemap.xml
+Sitemap: https://bymaranta.com/sitemap.xml
