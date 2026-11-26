@@ -293,6 +293,7 @@ a:hover>.ph img,.ph:hover img{transform:scale(1.04)}
 .cartn{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--coral);color:#2B1F4D;font:700 11px/20px 'Aftika',sans-serif;text-align:center}
 .cartb.bump{animation:bump .5s cubic-bezier(.2,.7,.2,1)}@keyframes bump{40%{transform:scale(1.18)}}
 .dnav+.cartb{margin-left:8px}
+.gocart{justify-self:center;font-weight:700;font-size:14px;color:var(--violet);text-decoration:underline;text-underline-offset:4px}
 .cartw{padding-top:120px;padding-bottom:80px}.cartw h1{font-size:clamp(34px,5vw,52px);margin:8px 0 26px}
 .cgrid{display:grid;gap:32px}@media(min-width:900px){.cgrid{grid-template-columns:1.5fr 1fr;align-items:start}.csum{position:sticky;top:100px}}
 .clist{list-style:none;margin:0;padding:0;display:grid;gap:14px}
@@ -497,7 +498,7 @@ a:hover>.ph img,.ph:hover img{transform:scale(1.04)}
       <a href="#sobre" data-nav="sobre">Sobre Maranta</a>
       <a href="#cuidado" data-nav="cuidado">Cuidado</a>
     </nav>
-    <a class="ibtn cartb" id="cartBtn" href="#pedido" aria-label="Mi pedido"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 01-2 1.8H8.2a2 2 0 01-2-1.8L5 8z"/><path d="M9 8V6.5a3 3 0 016 0V8"/></svg><span class="cartn" id="cartN">0</span></a>
+    <a class="ibtn cartb" id="cartBtn" href="#pedido" aria-label="Mi pedido"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2.5 3.5 6v13.5a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2V6L18 2.5z"/><path d="M3.5 6h17"/><path d="M15.8 10a3.8 3.8 0 0 1-7.6 0"/></svg><span class="cartn" id="cartN">0</span></a>
     <button class="ibtn only-m" id="menuBtn" aria-label="Abrir menú"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
   </div></div>
 </header>
@@ -680,7 +681,7 @@ function vProd(id){
     '<div class="field"><textarea id="oT" placeholder="¿Algo especial para esta pieza? Dedicatoria, color…" aria-label="Nota para esta pieza"></textarea></div>'+
     '<p class="otot" id="oTot">'+totHtml(p)+'</p>'+
     '<a class="btn" id="orderBtn" href="#" data-order="'+p.id+'">'+BAG+'Agregar a mi pedido</a>'+
-    '<a class="btn ghost" href="#" data-addgo="'+p.id+'">Agregar y finalizar pedido</a>'+
+    (cartCount()?'<a class="gocart" href="#pedido">Ver mi pedido ('+cartCount()+') →</a>':'')+
     '<p class="note" style="margin-top:0">Puedes agregar varias piezas y enviarnos todo en un solo mensaje de WhatsApp.</p></div>'+
     '<p class="note" style="margin-top:20px">Antes de encenderla, lee <a href="#cuidado">cómo cuidar tu vela</a>.</p></div></div>'+
     (rel.length?'<section class="sec rel" style="padding-top:14px"><div class="sec-h"><h2>También en '+c.name+'</h2></div><div class="grid g3" style="padding-top:0">'+rel.map(function(x){return card(x)}).join('')+'</div></section>':'')+'</div>';
@@ -867,7 +868,7 @@ function priceInfo(p){var u=pNum(p.price),q=parseInt(pv.sel.Cantidad,10)||1;
   return u?{unit:money(u)+' c/u',total:money(u*q)+' COP'}:{unit:'A consultar',total:'A consultar'}}
 function totHtml(p){var i=priceInfo(p);return pNum(p.price)?'Total: <b>'+i.total+'</b>':'Precio: <b>a consultar</b>'}
 function priceDd(p){var u=pNum(p.price),q=parseInt(pv.sel.Cantidad,10)||1;if(!u)return 'A consultar';return money(u*q)+' COP'+(q>1?'<small class="pq"> ('+q+' × '+money(u)+')</small>':'')}
-var BAG='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 01-2 1.8H8.2a2 2 0 01-2-1.8L5 8z"/><path d="M9 8V6.5a3 3 0 016 0V8"/></svg>';
+var BAG='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2.5 3.5 6v13.5a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2V6L18 2.5z"/><path d="M3.5 6h17"/><path d="M15.8 10a3.8 3.8 0 0 1-7.6 0"/></svg>';
 var CART=[];try{CART=JSON.parse(localStorage.getItem('maranta_pedido')||'[]')||[]}catch(e){CART=[]}
 CART=CART.filter(function(x){return x&&byId(x.id)});
 function saveCart(){try{localStorage.setItem('maranta_pedido',JSON.stringify(CART))}catch(e){}cartBadge()}
@@ -929,7 +930,7 @@ document.addEventListener('click',function(e){
   if((t=e.target.closest('#waFloat'))){if(!WA_NUMBER){e.preventDefault();toast('El WhatsApp se activa muy pronto.')}return}
   if((t=e.target.closest('[data-wa]'))){if(!WA_NUMBER){e.preventDefault();toast('El WhatsApp se activa muy pronto.')}else{t.href=waUrl(t.getAttribute('data-wa'));t.target='_blank';t.rel='noopener'}return}
   if((t=e.target.closest('[data-order]'))){e.preventDefault();var p=byId(t.getAttribute('data-order'));if(!p)return;
-    var q0=parseInt(pv.sel.Cantidad,10)||1;addToCart(p);resetSel();route();toast('Agregaste '+q0+' × '+p.name+' a tu pedido.');return}
+    var q0=parseInt(pv.sel.Cantidad,10)||1;addToCart(p);resetSel();route();toast('Agregaste '+q0+' × '+p.name+'. Puedes seguir agregando piezas.');return}
   if((t=e.target.closest('[data-addgo]'))){e.preventDefault();var p2=byId(t.getAttribute('data-addgo'));if(!p2)return;addToCart(p2);resetSel();location.hash='pedido';return}
   if((t=e.target.closest('[data-cq]'))){var ci=+t.getAttribute('data-cq'),it=CART[ci];if(it){it.q+= +t.getAttribute('data-d');if(it.q<1)CART.splice(ci,1);saveCart();keepCart()}return}
   if((t=e.target.closest('[data-crm]'))){CART.splice(+t.getAttribute('data-crm'),1);saveCart();keepCart();return}
