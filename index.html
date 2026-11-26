@@ -288,7 +288,24 @@ a:hover>.ph img,.ph:hover img{transform:scale(1.04)}
 .ofrm .field input,.ofrm .field textarea{padding:13px 16px}
 .ofrm .field textarea{min-height:76px}
 .ofrm .btn{width:100%}
-.otot{font-size:15px;margin:2px 0 -4px}.pq{font-weight:400;font-size:.82em;opacity:.75}.otot b{font-weight:700}
+.otot{font-size:15px;margin:2px 0 -4px}
+.cartb{position:relative;padding:0 11px;color:inherit}.cartb[hidden]{display:none!important}
+.cartn{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--coral);color:#2B1F4D;font:700 11px/20px 'Aftika',sans-serif;text-align:center}
+.cartb.bump{animation:bump .5s cubic-bezier(.2,.7,.2,1)}@keyframes bump{40%{transform:scale(1.18)}}
+.dnav+.cartb{margin-left:8px}
+.cartw{padding-top:120px;padding-bottom:80px}.cartw h1{font-size:clamp(34px,5vw,52px);margin:8px 0 26px}
+.cgrid{display:grid;gap:32px}@media(min-width:900px){.cgrid{grid-template-columns:1.5fr 1fr;align-items:start}.csum{position:sticky;top:100px}}
+.clist{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.citem{display:grid;grid-template-columns:84px 1fr auto;gap:16px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:12px}
+.cimg img{width:84px;height:84px;object-fit:cover;border-radius:16px;display:block}
+.cinfo{display:grid;gap:3px;min-width:0}.cname{font-weight:700;color:var(--ink);text-decoration:none}.cmeta{font-size:13px;color:var(--muted)}
+.cqty{display:flex;align-items:center;gap:10px;margin-top:6px}.cqty button{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:700 16px/1 sans-serif;cursor:pointer}
+.cqty .crm{width:auto;border:0;background:none;font:600 12.5px 'Aftika',sans-serif;color:var(--muted);text-decoration:underline;margin-left:6px;border-radius:0}
+.cprice{text-align:right;font-weight:700;padding-right:6px;display:grid}.cprice small{font-weight:400;font-size:12px;color:var(--muted)}
+.csum{background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:24px;display:grid;gap:14px}
+.ctot{display:flex;justify-content:space-between;align-items:baseline;font-size:18px}.ctot b{font-size:24px}
+.cempty{display:grid;gap:18px;justify-items:start;max-width:520px}
+@media(max-width:600px){.citem{grid-template-columns:64px 1fr}.cimg img{width:64px;height:64px}.cprice{grid-column:2;text-align:left;padding:0}.cartw{padding-top:104px}}.pq{font-weight:400;font-size:.82em;opacity:.75}.otot b{font-weight:700}
 
 /* ---------- producto ---------- */
 .prod{display:grid;gap:26px;padding-block:14px 40px}
@@ -480,6 +497,7 @@ a:hover>.ph img,.ph:hover img{transform:scale(1.04)}
       <a href="#sobre" data-nav="sobre">Sobre Maranta</a>
       <a href="#cuidado" data-nav="cuidado">Cuidado</a>
     </nav>
+    <a class="ibtn cartb" id="cartBtn" href="#pedido" aria-label="Mi pedido" hidden><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 01-2 1.8H8.2a2 2 0 01-2-1.8L5 8z"/><path d="M9 8V6.5a3 3 0 016 0V8"/></svg><span class="cartn" id="cartN">0</span></a>
     <button class="ibtn only-m" id="menuBtn" aria-label="Abrir menú"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
   </div></div>
 </header>
@@ -503,6 +521,7 @@ a:hover>.ph img,.ph:hover img{transform:scale(1.04)}
   <a href="#personalizados">Personalizados</a>
   <a href="#sobre">Sobre Maranta</a>
   <a href="#cuidado">Cuidado</a>
+  <a href="#pedido">Mi pedido</a>
   <a class="igc" href="https://www.instagram.com/bymaranta_/" target="_blank" rel="noopener" aria-label="Instagram de Maranta"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
 </div>
 <a class="wa" id="waFloat" href="#" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.05 21.78h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.26c0-5.45 4.44-9.89 9.89-9.89 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 7c0 5.45-4.44 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.42z"/></svg></a>
@@ -658,12 +677,11 @@ function vProd(id){
     '<dl class="ficha"><div><dt>Aroma</dt><dd class="pend">Por definir</dd></div><div><dt>Medidas</dt><dd class="pend">Por definir</dd></div><div><dt>Precio</dt><dd id="oPrice">'+priceDd(p)+'</dd></div></dl>'+
     inc+
     '<div class="ofrm"><span class="lab">Arma tu pedido</span>'+optsHtml()+
-    '<div class="field"><input id="oN" placeholder="Tu nombre" autocomplete="name" aria-label="Tu nombre"></div>'+
-    '<div class="field"><input id="oP" type="tel" inputmode="tel" placeholder="Tu número de teléfono" autocomplete="tel" aria-label="Tu número de teléfono"></div>'+
-    '<div class="field"><textarea id="oT" placeholder="¿Algo más? Dedicatoria, fecha en que la necesitas…" aria-label="Nota"></textarea></div>'+
+    '<div class="field"><textarea id="oT" placeholder="¿Algo especial para esta pieza? Dedicatoria, color…" aria-label="Nota para esta pieza"></textarea></div>'+
     '<p class="otot" id="oTot">'+totHtml(p)+'</p>'+
-    '<a class="btn" id="orderBtn" href="#" data-order="'+p.id+'">'+waIco+'Realizar mi pedido</a>'+
-    '<p class="note" style="margin-top:0">Cuando toques el botón, tu pedido nos llega y nos ponemos en contacto contigo para confirmarlo. ¡Así de fácil!</p></div>'+
+    '<a class="btn" id="orderBtn" href="#" data-order="'+p.id+'">'+BAG+'Agregar a mi pedido</a>'+
+    '<a class="btn ghost" href="#" data-addgo="'+p.id+'">Agregar y finalizar pedido</a>'+
+    '<p class="note" style="margin-top:0">Puedes agregar varias piezas y enviarnos todo en un solo mensaje de WhatsApp.</p></div>'+
     '<p class="note" style="margin-top:20px">Antes de encenderla, lee <a href="#cuidado">cómo cuidar tu vela</a>.</p></div></div>'+
     (rel.length?'<section class="sec rel" style="padding-top:14px"><div class="sec-h"><h2>También en '+c.name+'</h2></div><div class="grid g3" style="padding-top:0">'+rel.map(function(x){return card(x)}).join('')+'</div></section>':'')+'</div>';
 }
@@ -807,12 +825,13 @@ function route(){
   else if(COLS[h])html=vCol(h);
   else if(h.indexOf('p-')===0){var p=byId(h.slice(2));if(p){if(last!==h){pv.i=0;resetSel()}html=vProd(p.id);nav=p.col==='navidad'?'navidad':'catalogo'}else html=vHome()}
   else if(h==='personalizados')html=vCustom();
+  else if(h==='pedido')html=vCart();
   else if(h==='cuidado')html=vCare();
   else if(h==='sobre')html=vAbout();
   else html=vHome();
-  var B='Maranta Candle Lab',TT={catalogo:'Catálogo de velas y wax melts',navidad:'Velas de Navidad hechas a mano',personalizados:'Regalos corporativos y velas personalizadas',sobre:'Sobre Maranta',cuidado:'Cómo cuidar tu vela'},pp=h.indexOf('p-')===0?byId(h.slice(2)):null;
+  var B='Maranta Candle Lab',TT={catalogo:'Catálogo de velas y wax melts',navidad:'Velas de Navidad hechas a mano',personalizados:'Regalos corporativos y velas personalizadas',sobre:'Sobre Maranta',cuidado:'Cómo cuidar tu vela',pedido:'Tu pedido'},pp=h.indexOf('p-')===0?byId(h.slice(2)):null;
   document.title=pp?(pp.name+' · '+pp.type+' hecha a mano | '+B):(TT[nav]?TT[nav]+' | '+B:B+' | Velas decorativas y wax melts hechos a mano en Colombia');
-  view.innerHTML=html;view.className=(h.indexOf('p-')===0&&byId(h.slice(2)))?'inner':'';view.offsetWidth;view.classList.add('pg');
+  view.innerHTML=html;view.className=((h.indexOf('p-')===0&&byId(h.slice(2)))||h==='pedido')?'inner':'';view.offsetWidth;view.classList.add('pg');
   var dn=document.querySelectorAll('[data-nav]');
   for(var i=0;i<dn.length;i++){dn[i].getAttribute('data-nav')===nav?dn[i].setAttribute('aria-current','page'):dn[i].removeAttribute('aria-current')}
   if(h==='como'||h==='vendidos'){var el=$('#'+h);if(el)el.scrollIntoView()}else if(last!==h&&!(isCat(h)&&isCat(last)))window.scrollTo(0,0);
@@ -822,10 +841,11 @@ function route(){
 window.addEventListener('hashchange',route);
 
 function openMenu(){$('#menu').hidden=false;document.body.style.overflow='hidden'}
+function keepCart(){var g=function(i){return $('#'+i)?$('#'+i).value:''},v={n:g('cN'),p:g('cP'),t:g('cT')};view.innerHTML=vCart();if($('#cN')){$('#cN').value=v.n;$('#cP').value=v.p;$('#cT').value=v.t}}
 function closeMenu(){$('#menu').hidden=true;document.body.style.overflow=''}
 $('#menuBtn').addEventListener('click',openMenu);$('#menuX').addEventListener('click',closeMenu);
 $('#menu').addEventListener('click',function(e){if(e.target.closest('a'))closeMenu()});
-function hdr(){var h=(location.hash||'#inicio').slice(1),ban=!(h.indexOf('p-')===0&&byId(h.slice(2)));$('#top').classList.toggle('solid',!ban||window.scrollY>24)}
+function hdr(){var h=(location.hash||'#inicio').slice(1),ban=!((h.indexOf('p-')===0&&byId(h.slice(2)))||h==='pedido');$('#top').classList.toggle('solid',!ban||window.scrollY>24)}
 window.addEventListener('scroll',hdr,{passive:true});
 
 /* ===== Pedido por WhatsApp ===== */
@@ -847,6 +867,46 @@ function priceInfo(p){var u=pNum(p.price),q=parseInt(pv.sel.Cantidad,10)||1;
   return u?{unit:money(u)+' c/u',total:money(u*q)+' COP'}:{unit:'A consultar',total:'A consultar'}}
 function totHtml(p){var i=priceInfo(p);return pNum(p.price)?'Total: <b>'+i.total+'</b>':'Precio: <b>a consultar</b>'}
 function priceDd(p){var u=pNum(p.price),q=parseInt(pv.sel.Cantidad,10)||1;if(!u)return 'A consultar';return money(u*q)+' COP'+(q>1?'<small class="pq"> ('+q+' × '+money(u)+')</small>':'')}
+var BAG='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 01-2 1.8H8.2a2 2 0 01-2-1.8L5 8z"/><path d="M9 8V6.5a3 3 0 016 0V8"/></svg>';
+var CART=[];try{CART=JSON.parse(localStorage.getItem('maranta_pedido')||'[]')||[]}catch(e){CART=[]}
+CART=CART.filter(function(x){return x&&byId(x.id)});
+function saveCart(){try{localStorage.setItem('maranta_pedido',JSON.stringify(CART))}catch(e){}cartBadge()}
+function cartCount(){return CART.reduce(function(a,x){return a+x.q},0)}
+function cartBadge(){var n=cartCount(),b=$('#cartBtn');if(!b)return;b.hidden=!n;$('#cartN').textContent=n;b.setAttribute('aria-label','Mi pedido, '+n+(n===1?' pieza':' piezas'))}
+function addToCart(p){var q=parseInt(pv.sel.Cantidad,10)||1,emp=pv.sel.Empaque,note=(($('#oT')&&$('#oT').value)||'').trim();
+  var f=null;for(var i=0;i<CART.length;i++){var x=CART[i];if(x.id===p.id&&x.emp===emp&&!note&&!x.note){f=x;break}}
+  if(f)f.q+=q;else CART.push({id:p.id,q:q,emp:emp,note:note});saveCart();
+  var b=$('#cartBtn');if(b){b.classList.remove('bump');void b.offsetWidth;b.classList.add('bump')}}
+function cartTotal(){var s=0,pend=0;CART.forEach(function(x){var u=pNum(byId(x.id).price);if(u)s+=u*x.q;else pend++});return {s:s,pend:pend}}
+function cartText(){var g=function(i){return ($('#'+i)&&$('#'+i).value||'').trim()},n=g('cN'),c=g('cP'),note=g('cT');
+  var l=['Hola Maranta,'+(n?' Soy '+n+'.':''),'Quiero pedir:',''];
+  CART.forEach(function(x){var p=byId(x.id),u=pNum(p.price);
+    l.push('• '+x.q+' × '+p.name+(u?' — '+money(u*x.q):' — precio a consultar'));
+    l.push('   Empaque: '+x.emp);if(x.note)l.push('   Nota: '+x.note)});
+  var tt=cartTotal();l.push('');
+  if(tt.s)l.push('Total: '+money(tt.s)+' COP'+(tt.pend?' (+ '+tt.pend+(tt.pend===1?' pieza':' piezas')+' por cotizar)':''));
+  else l.push('Total: a consultar');
+  if(c)l.push('Mi teléfono: '+c);if(note)l.push('Nota: '+note);
+  l.push('','¡Gracias!');return l.join('\n')}
+function vCart(){
+  if(!CART.length)return '<div class="wrap cartw"><h1>Tu pedido</h1><div class="cempty"><p>Todavía no has agregado piezas.</p><a class="btn" href="#catalogo">Ver el catálogo</a></div></div>';
+  var tt=cartTotal();
+  var rows=CART.map(function(x,i){var p=byId(x.id),u=pNum(p.price);
+    return '<li class="citem"><a href="#p-'+p.id+'" class="cimg"><img src="img/'+p.imgs[0]+'.jpg" alt="'+esc(p.name)+'"></a>'+
+      '<div class="cinfo"><a href="#p-'+p.id+'" class="cname">'+esc(p.name)+'</a><span class="cmeta">'+esc(p.type)+' · Empaque: '+esc(x.emp)+'</span>'+(x.note?'<span class="cmeta">Nota: '+esc(x.note)+'</span>':'')+
+      '<div class="cqty"><button type="button" data-cq="'+i+'" data-d="-1" aria-label="Quitar una">−</button><b>'+x.q+'</b><button type="button" data-cq="'+i+'" data-d="1" aria-label="Agregar una">+</button>'+
+      '<button type="button" class="crm" data-crm="'+i+'">Quitar</button></div></div>'+
+      '<div class="cprice">'+(u?money(u*x.q):'<span class="cmeta">A consultar</span>')+(u&&x.q>1?'<small>'+x.q+' × '+money(u)+'</small>':'')+'</div></li>'}).join('');
+  return '<div class="wrap cartw"><a class="crumb" href="#catalogo">← Seguir comprando</a><h1>Tu pedido</h1>'+
+    '<div class="cgrid"><ul class="clist">'+rows+'</ul>'+
+    '<div class="csum"><div class="ctot"><span>Total</span><b>'+(tt.s?money(tt.s)+' COP':'A consultar')+'</b></div>'+
+    (tt.pend&&tt.s?'<p class="note" style="margin:0">+ '+tt.pend+(tt.pend===1?' pieza':' piezas')+' con precio por cotizar.</p>':'')+
+    '<div class="ofrm" style="margin-top:4px">'+
+    '<div class="field"><input id="cN" placeholder="Tu nombre" autocomplete="name" aria-label="Tu nombre"></div>'+
+    '<div class="field"><input id="cP" type="tel" inputmode="tel" placeholder="Tu número de teléfono" autocomplete="tel" aria-label="Tu número de teléfono"></div>'+
+    '<div class="field"><textarea id="cT" placeholder="¿Algo más? Fecha en que lo necesitas, ciudad de envío…" aria-label="Nota del pedido"></textarea></div>'+
+    '<a class="btn" href="#" id="cartSend">'+waIco+'Enviar pedido por WhatsApp</a>'+
+    '<p class="note" style="margin-top:0">Te llega todo en un solo mensaje. Lo confirmamos contigo y coordinamos el pago y el envío.</p></div></div></div></div>'}
 function orderText(p){
   var g=function(i){return ($('#'+i)&&$('#'+i).value||'').trim()},n=g('oN'),c=g('oP'),note=g('oT');
   var l=['Hola Maranta,'+(n?' Soy '+n+'.':''),'Quiero pedir:','','• '+pv.sel.Cantidad+' × '+p.name];
@@ -868,9 +928,16 @@ document.addEventListener('click',function(e){
   var t;
   if((t=e.target.closest('#waFloat'))){if(!WA_NUMBER){e.preventDefault();toast('El WhatsApp se activa muy pronto.')}return}
   if((t=e.target.closest('[data-wa]'))){if(!WA_NUMBER){e.preventDefault();toast('El WhatsApp se activa muy pronto.')}else{t.href=waUrl(t.getAttribute('data-wa'));t.target='_blank';t.rel='noopener'}return}
-  if((t=e.target.closest('[data-order]'))){var p=byId(t.getAttribute('data-order'));if(!p)return;
-    if(!checkContact('oN','oP',e))return;var tx=orderText(p);
-    if(WA_NUMBER){t.href=waUrl(tx);t.target='_blank';t.rel='noopener'}else{e.preventDefault();copyText(tx,'El WhatsApp se activa muy pronto. Por ahora copiamos tu pedido.')}return}
+  if((t=e.target.closest('[data-order]'))){e.preventDefault();var p=byId(t.getAttribute('data-order'));if(!p)return;
+    var q0=parseInt(pv.sel.Cantidad,10)||1;addToCart(p);resetSel();route();toast('Agregaste '+q0+' × '+p.name+' a tu pedido.');return}
+  if((t=e.target.closest('[data-addgo]'))){e.preventDefault();var p2=byId(t.getAttribute('data-addgo'));if(!p2)return;addToCart(p2);resetSel();location.hash='pedido';return}
+  if((t=e.target.closest('[data-cq]'))){var ci=+t.getAttribute('data-cq'),it=CART[ci];if(it){it.q+= +t.getAttribute('data-d');if(it.q<1)CART.splice(ci,1);saveCart();keepCart()}return}
+  if((t=e.target.closest('[data-crm]'))){CART.splice(+t.getAttribute('data-crm'),1);saveCart();keepCart();return}
+  if((t=e.target.closest('#cartSend'))){if(!CART.length){e.preventDefault();return}
+    if(!checkContact('cN','cP',e))return;var tx2=cartText();
+    if(WA_NUMBER){t.href=waUrl(tx2);t.target='_blank';t.rel='noopener';
+      setTimeout(function(){CART=[];saveCart();view.innerHTML='<div class="wrap cartw"><h1>¡Gracias!</h1><div class="cempty"><p>Te abrimos WhatsApp con tu pedido listo. Solo toca <b>Enviar</b> y te respondemos para confirmarlo.</p><a class="btn ghost" href="#catalogo">Volver al catálogo</a></div></div>'},400)}
+    else{e.preventDefault();copyText(tx2,'Copiamos tu pedido.')}return}
   if((t=e.target.closest('[data-img]'))){pv.i=parseInt(t.getAttribute('data-img'),10);var q=byId(last.slice(2));if(q){$('#pArt').innerHTML=ph(q.imgs[pv.i],q.name);var bs=document.querySelectorAll('.thumbs button');for(var j=0;j<bs.length;j++)bs[j].setAttribute('aria-pressed',j===pv.i)}return}
   if((t=e.target.closest('[data-opt]'))){var k=t.getAttribute('data-opt');pv.sel[k]=t.getAttribute('data-val');var sib=t.parentNode.querySelectorAll('button');for(var m=0;m<sib.length;m++)sib[m].setAttribute('aria-pressed',sib[m]===t);var qp=byId(last.slice(2));if(qp&&$('#oTot'))$('#oTot').innerHTML=totHtml(qp);if(qp&&$('#oPrice'))$('#oPrice').innerHTML=priceDd(qp);return}
 });
@@ -883,7 +950,7 @@ document.addEventListener('submit',function(e){
     l.push('Mi teléfono: '+g('cf-p'));
     sendWA(l.join('\n'));}
 });
-route();hdr();
+cartBadge();route();hdr();
 })();
 </script>
 
