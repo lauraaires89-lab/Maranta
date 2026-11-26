@@ -287,6 +287,7 @@ a:hover>.ph img,.ph:hover img{transform:scale(1.04)}
 .ofrm .field input,.ofrm .field textarea{padding:13px 16px}
 .ofrm .field textarea{min-height:76px}
 .ofrm .btn{width:100%}
+.otot{font-size:15px;margin:2px 0 -4px}.otot b{font-weight:700}
 
 /* ---------- producto ---------- */
 .prod{display:grid;gap:26px;padding-block:14px 40px}
@@ -659,6 +660,7 @@ function vProd(id){
     '<div class="field"><input id="oN" placeholder="Tu nombre" autocomplete="name" aria-label="Tu nombre"></div>'+
     '<div class="field"><input id="oP" type="tel" inputmode="tel" placeholder="Tu número de teléfono" autocomplete="tel" aria-label="Tu número de teléfono"></div>'+
     '<div class="field"><textarea id="oT" placeholder="¿Algo más? Dedicatoria, fecha en que la necesitas…" aria-label="Nota"></textarea></div>'+
+    '<p class="otot" id="oTot">'+totHtml(p)+'</p>'+
     '<a class="btn" id="orderBtn" href="#" data-order="'+p.id+'">'+waIco+'Realizar mi pedido</a>'+
     '<p class="note" style="margin-top:0">Cuando toques el botón, tu pedido nos llega y nos ponemos en contacto contigo para confirmarlo. ¡Así de fácil!</p></div>'+
     '<p class="note" style="margin-top:20px">Antes de encenderla, lee <a href="#cuidado">cómo cuidar tu vela</a>.</p></div></div>'+
@@ -838,10 +840,16 @@ function sendWA(text){
   if(WA_NUMBER){var w=window.open(waUrl(text),'_blank','noopener');if(!w)copyText(text,'Copiamos tu pedido. Pégalo en nuestro WhatsApp.');return}
   copyText(text,'El WhatsApp se activa muy pronto. Por ahora copiamos tu pedido.');
 }
+function pNum(s){return parseInt(String(s||'').replace(/\D/g,''),10)||0}
+function money(n){return '$'+n.toLocaleString('es-CO')}
+function priceInfo(p){var u=pNum(p.price),q=parseInt(pv.sel.Cantidad,10)||1;
+  return u?{unit:money(u)+' c/u',total:money(u*q)+' COP (precio base)'}:{unit:'A consultar',total:'A consultar'}}
+function totHtml(p){var i=priceInfo(p);return pNum(p.price)?'Total estimado: <b>'+i.total.replace(' COP (precio base)','')+' COP</b>':'Precio: <b>a consultar</b>'}
 function orderText(p){
   var g=function(i){return ($('#'+i)&&$('#'+i).value||'').trim()},n=g('oN'),c=g('oP'),note=g('oT');
   var l=['Hola Maranta,'+(n?' Soy '+n+'.':''),'Quiero pedir:','','• '+pv.sel.Cantidad+' × '+p.name];
   OPTS.forEach(function(o){if(o.k!=='Cantidad')l.push('   '+o.k+': '+pv.sel[o.k])});
+  var pi=priceInfo(p);l.push('   Precio: '+pi.unit);if(pNum(p.price))l.push('   Total estimado: '+pi.total);
   if(c)l.push('   Mi teléfono: '+c);
   if(note)l.push('','Nota: '+note);
   l.push('','¡Gracias!');return l.join('\n');
@@ -862,7 +870,7 @@ document.addEventListener('click',function(e){
     if(!checkContact('oN','oP',e))return;var tx=orderText(p);
     if(WA_NUMBER){t.href=waUrl(tx);t.target='_blank';t.rel='noopener'}else{e.preventDefault();copyText(tx,'El WhatsApp se activa muy pronto. Por ahora copiamos tu pedido.')}return}
   if((t=e.target.closest('[data-img]'))){pv.i=parseInt(t.getAttribute('data-img'),10);var q=byId(last.slice(2));if(q){$('#pArt').innerHTML=ph(q.imgs[pv.i],q.name);var bs=document.querySelectorAll('.thumbs button');for(var j=0;j<bs.length;j++)bs[j].setAttribute('aria-pressed',j===pv.i)}return}
-  if((t=e.target.closest('[data-opt]'))){var k=t.getAttribute('data-opt');pv.sel[k]=t.getAttribute('data-val');var sib=t.parentNode.querySelectorAll('button');for(var m=0;m<sib.length;m++)sib[m].setAttribute('aria-pressed',sib[m]===t);return}
+  if((t=e.target.closest('[data-opt]'))){var k=t.getAttribute('data-opt');pv.sel[k]=t.getAttribute('data-val');var sib=t.parentNode.querySelectorAll('button');for(var m=0;m<sib.length;m++)sib[m].setAttribute('aria-pressed',sib[m]===t);var qp=byId(last.slice(2));if(qp&&$('#oTot'))$('#oTot').innerHTML=totHtml(qp);return}
 });
 document.addEventListener('submit',function(e){
   if(e.target.id==='customForm'){e.preventDefault();
