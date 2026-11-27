@@ -676,7 +676,7 @@ function vProd(id){
   return '<div class="wrap"><a class="crumb" href="#'+p.col+'">← '+c.name+'</a>'+
     '<div class="prod"><div class="stage '+c.c+'">'+'<div id="pArt">'+ph(p.imgs[pv.i]||p.imgs[0],p.name)+'</div>'+thumbs+'</div>'+
     '<div><span class="tag">'+esc(p.type)+' · '+c.name+'</span><h1>'+esc(p.name)+'</h1><p class="story">'+esc(p.story)+'</p>'+
-    '<dl class="ficha"><div><dt>Aroma</dt><dd class="pend">Por definir</dd></div><div><dt>Medidas</dt><dd class="pend">Por definir</dd></div><div><dt>Precio</dt><dd id="oPrice">'+priceDd(p)+'</dd></div></dl>'+
+    '<dl class="ficha"><div><dt>Precio</dt><dd id="oPrice">'+priceDd(p)+'</dd></div></dl>'+
     inc+
     '<div class="ofrm"><span class="lab">Arma tu pedido</span>'+optsHtml()+
     '<div class="field"><textarea id="oT" placeholder="¿Algo especial para esta pieza? Dedicatoria, color…" aria-label="Nota para esta pieza"></textarea></div>'+
